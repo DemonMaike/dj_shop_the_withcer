@@ -1,1 +1,28 @@
-<mxfile host="app.diagrams.net" modified="2023-02-20T07:19:45.082Z" agent="5.0 (X11)" version="20.8.20" etag="ETKLaLIxRDEjpyvs9d-V" type="github"><diagram name="Page-1" id="o0u9ESd5L3pym0XIK_eO">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-02-20T07:26:56.986Z" agent="5.0 (X11)" etag="QqQwiW-Ba5WMxbRgO_rR" version="20.8.20" type="github">
+  <diagram name="Map" id="o0u9ESd5L3pym0XIK_eO">
+    <mxGraphModel dx="1434" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7TelBfZ7dqQPQzsz8Gbh-1" target="7TelBfZ7dqQPQzsz8Gbh-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-1" value="&lt;div&gt;Website&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-2" value="Main page" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-3" value="User&#39;s page" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-4" value="Basket page" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7TelBfZ7dqQPQzsz8Gbh-5" value="Product page" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
