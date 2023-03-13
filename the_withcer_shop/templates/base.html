@@ -7,6 +7,12 @@
     <title>{{ title }}</title>
 </head>
 <body>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'category' %}">Category</a></li>
+        <li><a href="{% url 'allproducts' %}">All Products</a></li>
+    </ul>
     {% block content %}{% endblock %}
 </body>
 </html>
