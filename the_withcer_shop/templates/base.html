@@ -7,11 +7,26 @@
     <title>{{ title }}</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <h1>Hello, {{ user.username }}</h1>
+    {% else %}
+    <h1>Hello, {{ user }}</h1>
+    {% endif %}
+
     <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'category' %}">Category</a></li>
         <li><a href="{% url 'allproducts' %}">All Products</a></li>
+        {% if user.is_authenticated %}
+        <form action="{% url 'logoutuser' %}" method="post">
+            {% csrf_token %}
+            <button>Log out</button>
+        </form>
+        {% else %}
+        <li><a href="{% url 'authentication' %}">Auth</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
     </ul>
     {% block content %}{% endblock %}
 </body>
