@@ -1,7 +1,6 @@
 from django.db import models
 
 class Product(models.Model):
-    """Model for products"""
     name = models.CharField(
         max_length=255, 
         verbose_name='Name of porduct'
@@ -14,13 +13,16 @@ class Product(models.Model):
         )
     photo = models.ImageField(
         upload_to='Product/%Y/%m/%d',
-        verbose_name='Photo of products'
+        verbose_name='Photo of products',
+        blank=True
         )
     category = models.ForeignKey(
         'Category',
          on_delete=models.CASCADE
         )
     
+    def __str__(self):
+        return self.name
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -32,6 +34,8 @@ class Category(models.Model):
         verbose_name='Category'
     )
 
+    def __str__(self):
+        return self.name
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
@@ -43,6 +47,8 @@ class Card(models.Model):
         on_delete=models.CASCADE
      )
 
+    def __str__(self):
+        return self.pk
     class Meta:
         verbose_name = 'Card'
         verbose_name_plural = 'Cards'
@@ -57,3 +63,5 @@ class Card_Product(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return self.pk
