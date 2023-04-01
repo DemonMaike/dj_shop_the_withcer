@@ -3,7 +3,10 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from app_shop.models import *
 
+
+# --- Website ---
 def home(request):
     """ homepage"""
 
@@ -28,6 +31,13 @@ def category(request):
     }
     return render(request, 'category.html', context)
 
+def currentcategory(request, cur_category):
+    """View for select category"""
+    cat_products = Product.objects.filter(category=cur_category)
+    context = {
+        'products': cat_products,
+    }
+    return render(request, 'currentcategory.html', context)
 
 def allproducts(request):
     """all products"""
@@ -35,6 +45,13 @@ def allproducts(request):
         'title': 'allproducts'
     }
     return render(request, 'allproducts.html', context)
+
+def currentproduct(request, cur_product):
+    """View for select product"""
+    context = {
+        'title': f'Current poduct {cur_product}'
+    }
+    return render(request,'currentpoduct.html',context)
 
 def authentication(request):
     """ Auth form """
@@ -56,7 +73,7 @@ def authentication(request):
             return redirect('home')
 
     
-
+# --- Auth/Sign Up/Logout ---
 def register(request):
     """register from"""
     if request.method == "GET":

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 class Product(models.Model):
     name = models.CharField(
@@ -18,11 +19,15 @@ class Product(models.Model):
         )
     category = models.ForeignKey(
         'Category',
-         on_delete=models.CASCADE
+         on_delete=models.CASCADE,
+         related_name='category'
         )
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('currentproduct', kwargs={'cur_product': self.pk})
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -36,6 +41,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('currentcategory', kwargs={'cur_category': self.pk})
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'

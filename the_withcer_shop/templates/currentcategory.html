@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
-{% load products_tags %}
-{% all_products as products %} 
 
-    <h1>{{ title }}</h1>
+
+    {% if products %}
     <ul>
         {% for i in products %}
             <li><a href="{{ i.get_absolute_url }}">{{ i.name }}</a></li>
             {{i.description}}
         {% endfor %}
+    {% else %}
+    <h1>Здесь пока ничего нет</h1>
+    {% endif %}
     </ul>
-
 {% endblock %}
