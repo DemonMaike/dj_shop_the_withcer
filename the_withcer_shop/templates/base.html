@@ -14,18 +14,18 @@
     {% endif %}
 <nav>
     <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'category' %}">Category</a></li>
-        <li><a href="{% url 'allproducts' %}">All Products</a></li>
+        <li><a href="{% url 'shop_app:home' %}">Home</a></li>
+        <li><a href="{% url 'shop_app:about' %}">About</a></li>
+        <li><a href="{% url 'shop_app:category' %}">Category</a></li>
+        <li><a href="{% url 'shop_app:allproducts' %}">All Products</a></li>
         {% if user.is_authenticated %}
-        <form action="{% url 'logoutuser' %}" method="post">
+        <form action="{% url 'shop_app:logoutuser' %}" method="post">
             {% csrf_token %}
             <button>Log out</button>
         </form>
         {% else %}
-        <li><a href="{% url 'authentication' %}">Auth</a></li>
-        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'shop_app:authentication' %}">Auth</a></li>
+        <li><a href="{% url 'shop_app:register' %}">Register</a></li>
         {% endif %}
     </ul>
 </nav>

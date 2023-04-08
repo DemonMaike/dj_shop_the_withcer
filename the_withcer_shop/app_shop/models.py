@@ -27,7 +27,7 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('currentproduct', kwargs={'cur_product': self.pk})
+        return reverse('shop_app:currentproduct', kwargs={'cur_product': self.pk})
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
@@ -43,7 +43,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('currentcategory', kwargs={'cur_category': self.pk})
+        return reverse('shop_app:currentcategory', kwargs={'cur_category': self.pk})
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
