@@ -49,27 +49,5 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
-class Card(models.Model):
-    id_user = models.ForeignKey(
-        'auth.User',
-        on_delete=models.CASCADE
-     )
-
-    def __str__(self):
-        return self.pk
-    class Meta:
-        verbose_name = 'Card'
-        verbose_name_plural = 'Cards'
-
-class Card_Product(models.Model):
-    id_card = models.ForeignKey(
-        'Card',
-         on_delete=models.CASCADE
-        )
-    id_product = models.ForeignKey(
-        'Product',
-        on_delete=models.CASCADE
-    )
-
-    def __str__(self):
-        return self.pk
+class Cart(models.Model):
+    cart = models.ManyToManyField('Product', related_name='products')
