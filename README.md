@@ -26,7 +26,11 @@ d) the create urls;
 e) the create simple templates, views and tests of availability pages;
 f) the create the form for registarion and authorization, create tests;
 g) the create models and put data, create tests, change tepmplates under requirements;
-h) the change pages with Bootstrap(Add the stile).
+h) apply style to pages using Bootstrap;
 
 On everyone steps i doing changes urls, tests, tamplates and add an info here.
 
+
+Also into this project i created сustom control command for auto-copeleted data in database, and this is new for me.
+
+That project has urlpatterns with regular expressions(in main url.py for cart app).

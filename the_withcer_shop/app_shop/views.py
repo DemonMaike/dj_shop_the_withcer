@@ -4,14 +4,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from app_shop.models import *
-
+from app_cart.forms import CartAddProductForm
+from app_cart.cart import Cart
 
 # --- Website ---
 def home(request):
     """ homepage"""
-
+    cart = Cart(request)
     context = {
         'title': 'homepage',
+        'cart': cart,
     }
     return render(request, 'home.html', context)
 
@@ -48,11 +50,16 @@ def allproducts(request):
 
 def currentproduct(request, cur_product):
     """View for select product"""
+    
     context = {
-        'title': f'Current poduct {cur_product}'
+        'title': f'Current product {cur_product}',
+        'form_for_cart': CartAddProductForm(),
+        'id': cur_product,
     }
-    return render(request,'currentpoduct.html',context)
+    return render(request,'currentproduct.html',context)
 
+
+# --- Auth/Sign Up/Logout ---
 def authentication(request):
     """ Auth form """
     if request.method == 'GET':
@@ -73,7 +80,7 @@ def authentication(request):
             return redirect('home')
 
     
-# --- Auth/Sign Up/Logout ---
+
 def register(request):
     """register from"""
     if request.method == "GET":

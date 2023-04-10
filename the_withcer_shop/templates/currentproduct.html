@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 
+
 {% block content %}
-    {{ title }}
+{% load products_tags %}
+{% get_product id as product %} 
+
+    {% for i in product %}
+    {{i.name}}<br>
+    {{i.description}}<br>
+    {{i.price}} $ for 1 position
+    <form action="{% url 'cart:cart_add' i.pk %}" method="post">
+        {{ form_for_cart.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Add to cart">
+    </form>
+    {% endfor %}
 {% endblock %}

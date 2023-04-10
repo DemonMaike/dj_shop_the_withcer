@@ -124,5 +124,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# For saving products in curt
-CART_SESSION_ID = 'curt'
+# For saving products in cart
+CART_SESSION_ID = 'cart'

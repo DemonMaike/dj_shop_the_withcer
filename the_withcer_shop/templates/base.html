@@ -26,9 +26,33 @@
         {% else %}
         <li><a href="{% url 'shop_app:authentication' %}">Auth</a></li>
         <li><a href="{% url 'shop_app:register' %}">Register</a></li>
-        {% endif %}
+        {% endif %}    
     </ul>
 </nav>
+<h3>Shopping cart</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+                <tr>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.total_price}}</td>
+                </tr>
+            {% endwith%}
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td>{{cart.get_total_price}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
     {% block content %}{% endblock %}
 </body>
 </html>
