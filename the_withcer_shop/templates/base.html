@@ -29,6 +29,7 @@
         {% endif %}    
     </ul>
 </nav>
+{% if user.is_authenticated %}
 <h3>Shopping cart</h3>
 <table>
     <thead>
@@ -52,6 +53,7 @@
         </tr>
     </tbody>
 </table>
+{% endif %}
 <br>
     {% block content %}{% endblock %}
 </body>

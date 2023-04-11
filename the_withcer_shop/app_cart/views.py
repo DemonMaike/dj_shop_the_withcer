@@ -10,9 +10,12 @@ def cart_add(request, product_id):
     product = get_object_or_404(Product, id = product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product,quantity=cd['quantity'], update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+        if request.user.is_authenticated == True:
+            cd = form.cleaned_data
+            cart.add(product=product,quantity=cd['quantity'], update_quantity=cd['update'])
+            return redirect('shop_app:allproducts')
+        else:
+            return redirect('shop_app:authentication')
 
 def cart_remove(request, product_id):
     cart = Cart(request)
