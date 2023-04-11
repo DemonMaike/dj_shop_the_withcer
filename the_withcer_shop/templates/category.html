@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% load categories_tags %}
-{% all_categories as categories %}
     <h1>{{ title }}</h1>
     <ul>
-    {% for i in categories %}
-        <a href="{{ i.get_absolute_url }}"><li>{{ i.name }}</li></a>
+    {% for c in category %}
+        <a href="{{ c.get_absolute_url }}"><li>{{ c.name }}</li></a>
     {% endfor %}
     </ul>
+<br>
+
 
 
 {% endblock %}

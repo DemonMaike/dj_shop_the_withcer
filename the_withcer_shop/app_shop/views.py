@@ -6,68 +6,78 @@ from django.db import IntegrityError
 from app_shop.models import *
 from app_cart.forms import CartAddProductForm
 from app_cart.cart import Cart
-
-# --- Website ---
-def home(request):
-    """ homepage"""
-    cart = Cart(request)
-    context = {
-        'title': 'homepage',
-        'cart': cart,
-    }
-    return render(request, 'home.html', context)
+from django.views.generic import *
 
 
-def about(request):
-    """ page about us"""
-    cart = Cart(request)
-    context = {
-        'title': 'about',
-        'cart': cart,
-    }
-    return render(request, 'about.html', context)
-
-
-def category(request):
-    """ all categoryes """
-    cart = Cart(request)
-    context = {
-        'title': 'category',
-        'cart': cart,
-    }
-    return render(request, 'category.html', context)
-
-def currentcategory(request, cur_category):
-    """View for select category"""
-    cart = Cart(request)
-    cat_products = Product.objects.filter(category=cur_category)
-    context = {
-        'products': cat_products,
-        'cart': cart,
-    }
-    return render(request, 'currentcategory.html', context)
-
-def allproducts(request):
-    """all products"""
-    cart = Cart(request)
-    context = {
-        'title': 'allproducts',
-        'cart': cart,
-    }
-    return render(request, 'allproducts.html', context)
-
-def currentproduct(request, cur_product):
-    """View for select product"""
-    cart = Cart(request)
+class ShopHome(TemplateView):
+    template_name = 'home.html'
+    extra_context = {'title': 'homepage'}
+        
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['cart'] = Cart(request)
+        return self.render_to_response(context)
     
-    context = {
-        'title': f'Current product {cur_product}',
-        'form_for_cart': CartAddProductForm(),
-        'id': cur_product,
-        'cart': cart,
-    }
-    return render(request,'currentproduct.html',context)
+class ShopAbout(TemplateView):
+    template_name = 'about.html'
+    extra_context = {'title': 'about'}
+    
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['cart'] = Cart(request)
+        return self.render_to_response(context)
+    
+class ShopACategories(ListView):
+    model = Category
+    template_name = 'category.html'
+    extra_context = {'title': 'category'}
+    context_object_name = 'category'
 
+class ShowCategory(ListView):
+    model = Product
+    template_name = 'currentcategory.html'
+    pk_url_kwarg = 'cur_category'
+    context_object_name = 'products'
+    
+    def get_queryset(self):
+        return Product.objects.filter(category=self.kwargs['cur_category'])
+    
+class ShopProducts(ListView):
+    model = Product
+    template_name = 'allproducts.html'
+    context_object_name = 'product'
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cart'] = Cart(self.request)
+        return context
+    
+
+# def currentproduct(request, cur_product):
+#     """View for select product"""
+#     cart = Cart(request)
+    
+#     context = {
+#         'title': f'Current product {cur_product}',
+#         'form_for_cart': CartAddProductForm(),
+#         'id': cur_product,
+#         'cart': cart,
+#     }
+#     return render(request,'currentproduct.html',context)
+
+class ShowProduct(DetailView):
+    model = Product
+    pk_url_kwarg = 'cur_product'
+    template_name = 'currentproduct.html'
+    context_object_name = 'product'
+    extra_context = {'title': 'All products'}
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_for_cart'] = CartAddProductForm()
+        context['title'] = 'All Products'
+        return context
+    
 
 # --- Auth/Sign Up/Logout ---
 def authentication(request):
