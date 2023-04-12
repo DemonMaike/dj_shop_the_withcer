@@ -126,3 +126,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # For saving products in cart
 CART_SESSION_ID = 'cart'
+
+#Register
+LOGIN_REDIRECT_URL = 'shop_app:home'
