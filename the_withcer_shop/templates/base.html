@@ -35,25 +35,25 @@
 <table>
     <thead>
         <tr>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th> Total quantity</th>
+            <th>Total price</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
+        <!-- {% for item in cart %}
                 <tr>
-                    <td>{{item.get_total_price}}</td>
+                    <td>{{item.quantity}}</td>
                     <td>{{item.total_price}}</td>
                 </tr>
-            {% endwith%}
-        {% endfor %}
+        {% endfor %} -->
         <tr>
-            <td>Total</td>
-            <td>{{cart.get_total_price}}</td>
+            <td>{{cart.get_total_quantity}}</td>
+            <td>{{cart.get_total_price}} $</td>
         </tr>
     </tbody>
 </table>
+<a href="{% url 'cart:cart_detail' %}">Move to cart</a>
+<br>
 {% endif %}
 <br>
     {% block content %}{% endblock %}
