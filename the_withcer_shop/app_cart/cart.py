@@ -60,3 +60,9 @@ class Cart:
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
+    
+    def get_total_quantity(self):
+        total = 0
+        for i in self.cart.values():
+            total += i['quantity']
+        return total
