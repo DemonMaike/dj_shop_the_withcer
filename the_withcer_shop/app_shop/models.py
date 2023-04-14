@@ -48,6 +48,3 @@ class Category(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
-
-class Cart(models.Model):
-    cart = models.ManyToManyField('Product', related_name='products')

@@ -35,6 +35,7 @@ class ShopACategories(ListView):
     template_name = 'category.html'
     extra_context = {'title': 'category'}
     context_object_name = 'category'
+    
 
 class ShowCategory(ListView):
     model = Product
@@ -54,6 +55,7 @@ class ShopProducts(ListView):
         context = super().get_context_data(**kwargs)
         context['cart'] = Cart(self.request)
         return context
+
 
 class ShowProduct(DetailView):
     model = Product
