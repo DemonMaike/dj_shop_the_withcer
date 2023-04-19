@@ -5,11 +5,15 @@
 {% block content %}
 
     <h1>{{ title }}</h1>
-    <ul>
-        {% for p in product %}
-            <li><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></li>
-            {{p.description}}
-        {% endfor %}
-    </ul>
+    <div class="justify-content-center">
+        <ul class="row justify-content-center">    
+            {% for p in product %}
+                <div class="col-3 m-1">
+                <li><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></li>
+                {{p.description}}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}
