@@ -5,9 +5,11 @@
 {{ error }}
 
 <form action="" enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-primary" type="submit">Registration</button>
+    <div class="row justify-content-center text-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary col-3" type="submit">Registration</button>
+    </div>
 </form>
 
 {% endblock %}
