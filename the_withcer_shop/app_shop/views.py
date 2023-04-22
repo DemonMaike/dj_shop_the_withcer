@@ -10,6 +10,7 @@ from django.views.generic import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .forms import CreateUserForm
 
 
 class ShopHome(TemplateView):
@@ -78,7 +79,7 @@ class LoginUser(LoginView):
         return reverse_lazy('shop_app:home')
         
 class RgisterUser(FormView):
-    form_class = UserCreationForm
+    form_class = CreateUserForm
     template_name = 'register.html'
     success_url = 'shop_app:home'
     
