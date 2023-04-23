@@ -37,6 +37,11 @@ class ShopACategories(ListView):
     extra_context = {'title': 'category'}
     context_object_name = 'category'
     
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cart'] = Cart(self.request)
+        return context
+    
 
 class ShowCategory(ListView):
     model = Product
@@ -46,6 +51,11 @@ class ShowCategory(ListView):
     
     def get_queryset(self):
         return Product.objects.filter(category=self.kwargs['cur_category'])
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cart'] = Cart(self.request)
+        return context
     
 class ShopProducts(ListView):
     model = Product
