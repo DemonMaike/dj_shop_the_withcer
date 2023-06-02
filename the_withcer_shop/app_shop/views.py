@@ -50,6 +50,7 @@ class ShopProducts(ListView):
     model = Product
     template_name = 'allproducts.html'
     context_object_name = 'product'
+    extra_context = {'title': 'All products'}
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -62,12 +63,10 @@ class ShowProduct(DetailView):
     pk_url_kwarg = 'cur_product'
     template_name = 'currentproduct.html'
     context_object_name = 'product'
-    extra_context = {'title': 'All products'} # Problem, don't show title on the page
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form_for_cart'] = CartAddProductForm()
-        context['title'] = 'All Products'
         return context
 
 class LoginUser(LoginView):

@@ -18,9 +18,13 @@ img {
     height: auto;
 }
 
-li {
+ li {
     list-style-type: none;
 }
+
+ul {
+    padding-left: 0;
+  }
 
 a {
     color: #111;

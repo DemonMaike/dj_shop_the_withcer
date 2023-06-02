@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
-
-    <h1>{{ title }}</h1>
-    <ul>
-        {% for p in product %}
-            <li><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></li>
-            {{p.description}}
-        {% endfor %}
-    </ul>
-
+<h1>{{title}}</h1>
+<div class="container text-center">
+<div class="row justify-content-md-center">
+    {% for p in product %}
+        <div class="col-xs-12 col-md-4">
+            <a href="{{ p.get_absolute_url }}">{{ p.name }}</a>
+            {{ p.description }}
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

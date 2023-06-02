@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <ul>
-    {% for c in category %}
-        <a href="{{ c.get_absolute_url }}"><li>{{ c.name }}</li></a>
-    {% endfor %}
-    </ul>
-<br>
-
-
+<h1>{{ title }}</h1>
+<div class="container text-center">
+    <div class="row align-items-center">
+          {% for c in category %}
+            <div class="col"><a href="{{ c.get_absolute_url }}"><li>{{ c.name }}</li></a></div>
+          {% endfor %}
+    </div>
+</div>
+<br />
 
 {% endblock %}
