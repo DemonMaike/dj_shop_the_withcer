@@ -3,8 +3,10 @@
 
 
 {% block content %}
-
-    {{product.name}}<br>
+    {% if product.photo %}
+        <p><img src="{{ product.photo.url }}" alt=""></p>
+    {% endif %}
+    <h2>{{product.name}}<br></h2>
     {{product.description}}<br>
     {{product.price}} $ for 1 position
     <form action="{% url 'cart:cart_add' product.pk %}" method="post">

@@ -135,3 +135,8 @@ CART_SESSION_ID = 'cart'
 
 #Register
 LOGIN_REDIRECT_URL = 'shop_app:home'
+
+# Media
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
