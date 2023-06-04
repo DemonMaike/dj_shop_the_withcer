@@ -1,14 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
 <h1>{{ title }}</h1>
 <div class="container text-center">
-    <div class="row align-items-center">
-          {% for c in category %}
-            <div class="col"><a href="{{ c.get_absolute_url }}"><li>{{ c.name }}</li></a></div>
-          {% endfor %}
+  <div class="row justify-content-md-center">
+    {% for c in category %}
+    <div class="card mb-5 me-5 col-xs-12 col-md-3">
+      <div class="card-body">
+        <h2 class="card-title">{{ c.name }}</h2>
+        <a href="{{ c.get_absolute_url }}" class="btn btn-primary">Open</a>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
 <br />
 
 {% endblock %}
+
+<div class="card mb-5 me-5 col-xs-12 col-md-3">
+  <div class="card-body">
+    <h2 class="card-title">{{ c.name }}</h2>
+    <a href="{{ c.get_absolute_url }}" class="btn btn-primary">Open</a>
+  </div>
+</div>
