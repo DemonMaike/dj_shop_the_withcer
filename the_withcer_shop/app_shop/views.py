@@ -10,6 +10,7 @@ from django.views.generic import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .forms import FeedbackForm
 
 
 class ShopHome(TemplateView):
@@ -28,6 +29,7 @@ class ShopAbout(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context['cart'] = Cart(request)
+        context['form'] = FeedbackForm()
         return self.render_to_response(context)
     
 class ShopACategories(ListView):

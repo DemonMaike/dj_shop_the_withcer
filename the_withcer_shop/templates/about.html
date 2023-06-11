@@ -1,3 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}{{ title }}{% endblock %}
+<div class="container text-left">
+  <div class="d-flex mb-3">
+    <h1>{{ title }}</h1>
+  </div>
+  <p>
+    An experienced witcher understands that power lies not only in the sword but
+    also in the power of words. We value your opinion and are ready to listen to
+    you. Please use this feedback page to share your thoughts, ideas, and
+    impressions about our Witcher-themed store.<br /><br />So, immerse yourself
+    in the world of magic and fill out the feedback form below. Thank you for
+    your time and for your loyalty to the Witcher. Your voice helps us improve
+    and continue to inspire fans of this incredible fantasy world.<br /><br />
+    The blood of elves and the swords of witchers will never be able to stop us!
+  </p>
+  <div class="d-flex justify-content-end">
+    <h2>- Geralt from Livia</h2>
+  </div>
+  <form action="#">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary"> Send feedback </button>
+</form>
+</div>
+
+{% endblock %}
