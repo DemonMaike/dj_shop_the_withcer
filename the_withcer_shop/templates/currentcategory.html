@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-
+<div class="row justify-content-md-center">
     {% if products %}
-    <ul>
+   
         {% for i in products %}
-            <li><a href="{{ i.get_absolute_url }}">{{ i.name }}</a></li>
-            {{i.description}}
+            <div class="card mb-5 me-5 col-xs-12 col-md-3 ">
+                {% if i.photo %}
+                <img src="{{i.photo.url}}" class="card-img-top" alt="OOPS!" />
+                {% endif %}
+                <div class="card-body">
+                  <h2 class="card-title">{{ i.name }}</h2>
+                  <p class="card-text">{{ i.description }}</p>
+                  <a href="{{ p.get_absolute_url }}" class="btn btn-primary">More</a>
+                </div>
+            </div>
         {% endfor %}
+            
+</div>
     {% else %}
     <h1>There's nothing here yet</h1>
     {% endif %}
-    </ul>
 {% endblock %}

@@ -3,15 +3,25 @@
 
 
 {% block content %}
-    {% if product.photo %}
-        <p><img src="{{ product.photo.url }}" alt=""></p>
-    {% endif %}
-    <h2>{{product.name}}<br></h2>
-    {{product.description}}<br>
-    {{product.price}} $ for 1 position
-    <form action="{% url 'cart:cart_add' product.pk %}" method="post">
-        {{ form_for_cart.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Add to cart">
-    </form>
+    <div class="card" style="max-width: 100%; max-height:100%;">
+        <div class="row g-0">
+          <div class="col">
+            {% if product.photo %}
+                <img src="{{ product.photo.url }}" alt="">
+            {% endif %}
+          </div>
+          <div class="col col-xl-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text d-flex">{{product.description}}</p>
+              <p class="card-text">
+                <form class="position-absolute bottom-0 end-0 p-2" action="{% url 'cart:cart_add' product.pk %}" method="post">
+                {{ form_for_cart.as_p }}
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Add to cart">
+            </form></p>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}

@@ -17,7 +17,7 @@
         {% for item in cart %}
             {% with product=item.product %}
                 <tr>
-                    <td>{{product.photo}}</td>
+                    <td><img src="{{product.photo.url}}" width="50" alt="OOPS!"></td>
                     <td>{{product.name}}</td>
                     <td>{{item.quantity}}</td>
                     <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
