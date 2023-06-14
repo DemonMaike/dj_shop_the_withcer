@@ -17,7 +17,14 @@
     {% else %}
     <h1>Hello, {{ user }}</h1>
     {% endif %}
-    {{comment}}
+
+    {% if comment %}
+    <div class="alert alert-info width" role="alert">
+      {{comment}}
+    </div>
+    {% endif %}
+    
+    
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -45,15 +52,15 @@
             {% if user.is_authenticated %}
               {% with total_items=cart|length %}
                 {% if cart|length > 0 %}
-                <li class="nav-item">
+                <div class="d-flex align-items-center nav-item pe-1">
                   Your cart:
                       {{ total_items }} item{{ total_items|pluralize }},
                       ${{ cart.get_total_price}}
-                </li>
+                </div>
                   {% else %}
-                  <li class="nav-item ms-auto">
+                  <div class="d-flex align-items-center nav-item pe-1">
                     Your cart is empty.
-                  </li>
+                  </div>
                   {% endif %}
                 
               {% endwith %}

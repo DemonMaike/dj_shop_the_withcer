@@ -33,6 +33,7 @@ class ShopAbout(TemplateView):
         return self.render_to_response(context)
     
 class ShopACategories(ListView):
+    paginate_by = 6
     model = Category
     template_name = 'category.html'
     extra_context = {'title': 'category'}
@@ -40,6 +41,7 @@ class ShopACategories(ListView):
     
 
 class ShowCategory(ListView):
+    paginate_by = 6
     model = Product
     template_name = 'currentcategory.html'
     pk_url_kwarg = 'cur_category'
@@ -49,6 +51,7 @@ class ShowCategory(ListView):
         return Product.objects.filter(category=self.kwargs['cur_category'])
     
 class ShopProducts(ListView):
+    paginate_by = 6
     model = Product
     template_name = 'allproducts.html'
     context_object_name = 'product'

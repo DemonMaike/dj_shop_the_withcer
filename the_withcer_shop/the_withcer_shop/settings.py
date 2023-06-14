@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # my app
     'app_shop',
     'app_cart',
+    'app_orders',
     'debug_toolbar',
 ]
 

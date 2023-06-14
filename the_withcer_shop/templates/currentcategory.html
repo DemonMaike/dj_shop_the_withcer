@@ -9,15 +9,35 @@
                 {% if i.photo %}
                 <img src="{{i.photo.url}}" class="card-img-top" alt="OOPS!" />
                 {% endif %}
-                <div class="card-body">
+                <div class="card-body text-center">
                   <h2 class="card-title">{{ i.name }}</h2>
                   <p class="card-text">{{ i.description }}</p>
                   <a href="{{ p.get_absolute_url }}" class="btn btn-primary">More</a>
                 </div>
             </div>
-        {% endfor %}
-            
+        {% endfor %}   
 </div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-md-center">
+        {% if page_obj.has_previous %}
+        <a class="page-link" href="?page={{ page_obj.previous_page_number}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        {% endif %}
+    </ul>
+</nav>
+
+
     {% else %}
     <h1>There's nothing here yet</h1>
     {% endif %}
