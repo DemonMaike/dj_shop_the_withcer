@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
@@ -10,7 +10,7 @@ from django.views.generic import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .forms import FeedbackForm
+from .forms import FeedbackForm, RegisterForm
 
 
 class ShopHome(TemplateView):
@@ -82,7 +82,7 @@ class LoginUser(LoginView):
         return reverse_lazy('shop_app:home')
         
 class RgisterUser(FormView):
-    form_class = UserCreationForm
+    form_class = RegisterForm
     template_name = 'register.html'
     success_url = 'shop_app:home'
     
