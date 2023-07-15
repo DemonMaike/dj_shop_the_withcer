@@ -4,17 +4,20 @@
 
 {{ error }}
 
-<div class="text-center">
 <form action="" enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {% for f in form %}
-        <p><label for="{{ f.id_for_label }}">{{f.label}}:</label>{{ f }}</p>
-        {% if f.errors %}
-            <div class="alert alert-primary" role="alert">{{ f.errors }}</div>
-        {% endif %}
-    {% endfor %}
-    <button class="btn btn-primary" type="submit">Registration</button>
+    <div class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+        {% for f in form %}
+            <div class="d-flex justify-content-between col-4 p-2">
+              <label for="{{ f.id_for_label }}" class="form-label">{{ f.label }}</label>
+              {{ f }}
+            </div>
+            {% if f.errors %}
+                <div class="alert alert-primary" role="alert">{{ f.errors }}</div>
+            {% endif %}
+        {% endfor %}
+        <button class="btn btn-primary col-4" type="submit">Registration</button>
+    </div>
 </form>
-</div>
 
 {% endblock %}
